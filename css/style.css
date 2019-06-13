@@ -715,7 +715,7 @@ li.linkedin a  {
 /*-- text --*/
 
 .text-content {
-    background: url(../images/banner4.jpg) no-repeat center;
+    background: url({{site.baseurl}}/images/banner4.jpg) no-repeat center;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -990,7 +990,7 @@ a.move-top span{
 
 /*-- inner banner --*/
 .banner_inner {
-    background: url(../images/banner1.jpg) no-repeat center;
+    background: url({{site.baseurl}}/images/banner1.jpg) no-repeat center;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -1029,7 +1029,7 @@ a.move-top span{
     color: #047ffc;
 }
 .choose {
-    background: url(../images/choose.jpg) no-repeat center;
+    background: url({{site.baseurl}}/images/choose.jpg) no-repeat center;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
