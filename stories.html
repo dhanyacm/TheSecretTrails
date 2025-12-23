@@ -1,0 +1,68 @@
+---
+layout: default
+description: Personal Travel Website Stories Page
+title: Stories
+id: stories
+frontpage: false
+---
+<section class="stories-section">
+  <div class="masonry" id="storiesContainer">
+
+    <div id="storiesContainer"></div>
+
+<script>
+fetch('stories.json')
+  .then(res => res.json())
+  .then(stories => {
+    const container = document.getElementById('storiesContainer');
+    stories.forEach(story => {
+      const card = document.createElement('div');
+      card.className = 'story-card';
+      card.innerHTML = `
+        <img src="${story.image}" alt="${story.title}">
+        <h3>${story.title}</h3>
+        <p>${story.excerpt}</p>
+        <a href="${story.contentUrl}">Read More</a>
+      `;
+      container.appendChild(card);
+    });
+  });
+</script>
+
+
+      </div>
+</section>
+
+
+<script>
+let allStories = [];
+
+fetch('stories.json')
+  .then(res => res.json())
+  .then(stories => {
+    allStories = stories;
+    displayStories(stories);
+  });
+
+function displayStories(stories) {
+  const container = document.getElementById('storiesContainer');
+  container.innerHTML = '';
+
+  stories.forEach(story => {
+    const card = document.createElement('article');
+    card.className = 'story-card';
+
+    card.innerHTML = `
+      <img src="${story.image}" alt="${story.title}">
+      <div class="story-card-content">
+        <span class="story-tag">${story.category}</span>
+        <h3>${story.title}</h3>
+        <p>${story.excerpt}</p>
+        <a href="${story.contentUrl}">Read →</a>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+</script>
+
