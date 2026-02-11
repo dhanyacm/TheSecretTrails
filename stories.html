@@ -66,3 +66,42 @@ function displayStories(stories) {
 }
 </script>
 
+<div class="filter-bar">
+  <button onclick="filterStories('All')">All</button>
+  <button onclick="filterStories('Adventure')">Adventure</button>
+  <button onclick="filterStories('Food')">Food</button>
+</div>
+
+<script>
+let allStories = [];
+
+fetch('stories.json')
+  .then(res => res.json())
+  .then(stories => {
+    allStories = stories;
+    displayStories(stories);
+  });
+
+function filterStories(category) {
+  const filtered = category === 'All'
+    ? allStories
+    : allStories.filter(s => s.category === category);
+  displayStories(filtered);
+}
+
+function displayStories(stories) {
+  const container = document.getElementById('storiesContainer');
+  container.innerHTML = '';
+  stories.forEach(story => {
+    container.innerHTML += `
+      <div class="story-card">
+        <img src="${story.image}" alt="${story.title}">
+        <h3>${story.title}</h3>
+        <p>${story.excerpt}</p>
+        <a href="${story.contentUrl}">Read More</a>
+      </div>`;
+  });
+}
+</script>
+
+
