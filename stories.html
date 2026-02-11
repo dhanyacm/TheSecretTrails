@@ -104,4 +104,22 @@ function displayStories(stories) {
 }
 </script>
 
+<nav class="category-nav">
+  <a onclick="filterStories('Adventure')">🏕 Adventure</a>
+  <a onclick="filterStories('Food')">🍲 Food</a>
+  <a onclick="filterStories('Nature')">🌿 Nature</a>
+</nav>
+
+function searchStories(keyword) {
+  const filtered = allStories.filter(s =>
+    s.title.toLowerCase().includes(keyword.toLowerCase())
+  );
+  displayStories(filtered);
+}
+
+document.getElementById('searchInput').addEventListener('keyup', e =>
+  searchStories(e.target.value)
+);
+
+
 
